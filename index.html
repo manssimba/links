@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Länkgrej</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align:center;
+        }
+        a {
+            padding: 10px 20px; 
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            color: blue;
+        }
+        a:hover {
+            background-color: lightblue;
+            opacity:0.4;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom:50px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.so-rummet.se/sites/default/files/styles/375xx/public/2024-01/Stormningen-avbastillien-franska-revolutionen-1789.jpg?itok=zjMqCjZl" alt="">
+    <script>
+        //Make a get request to get list.txt and choose a random link (one link per line) to redirect to
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "list.txt", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var links = xhr.responseText.split("\n");
+                var randomLink = links[Math.floor(Math.random() * links.length)];
+                //wait for 2 seconds before redirecting
+                setTimeout(function() {
+                    window.location.href = randomLink;
+                }, 1000);
+                redirect(randomLink);
+            }
+        }
+        xhr.send();
+
+        function redirect(randomLink) {
+            //show a link to the user to redirect to
+            var a = document.createElement("a");
+            var linkText = document.createTextNode("Omdirigeras om 1 sekund... Klicka här om det inte fungerar.");
+            a.appendChild(linkText);
+            a.title = "Click here to redirect";
+            a.href = randomLink;
+            document.body.appendChild(a);
+        }
+    </script>
+</body>
+</html>
