@@ -30,7 +30,7 @@
     </style>
 </head>
 <body>
-    <img src="https://www.so-rummet.se/sites/default/files/styles/375xx/public/2024-01/Stormningen-avbastillien-franska-revolutionen-1789.jpg?itok=zjMqCjZl" alt="">
+    <img src="digitaldassbok.png" alt="">
     <script>
         //Make a get request to get list.txt and choose a random link (one link per line) to redirect to
         var xhr = new XMLHttpRequest();
@@ -42,7 +42,7 @@
                 //wait for 2 seconds before redirecting
                 setTimeout(function() {
                     window.location.href = randomLink;
-                }, 1000);
+                }, 2000);
                 redirect(randomLink);
             }
         }
@@ -51,7 +51,7 @@
         function redirect(randomLink) {
             //show a link to the user to redirect to
             var a = document.createElement("a");
-            var linkText = document.createTextNode("Omdirigeras om 1 sekund... Klicka här om det inte fungerar.");
+            var linkText = document.createTextNode("Omdirigeras om 2 sekunder... Klicka här om det inte fungerar.");
             a.appendChild(linkText);
             a.title = "Click here to redirect";
             a.href = randomLink;
